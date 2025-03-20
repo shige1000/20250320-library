@@ -25,7 +25,3 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(divide(-6, -2), 3)
         with self.assertRaises(ValueError):
             divide(5, 0)
-
-
-if __name__ == "__main__":
-    unittest.main()

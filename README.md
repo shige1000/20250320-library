@@ -11,28 +11,32 @@
 
 ## インストール
 
-開発用インストール:
+**重要**: テストを実行する前に必ずパッケージをインストールしてください。
+
+1. 依存パッケージのインストール:
 ```bash
 pip install -r requirements.txt
 ```
 
-パッケージとしてインストール:
+2. パッケージを開発モードでインストール (**必須**):
 ```bash
 pip install -e .
 ```
+
+このステップにより、モジュールのインポートパスが正しく設定され、テストが正常に実行できるようになります。
 
 ## テストの実行
 
 ローカルでテストを実行するには：
 
 ```bash
-pytest tests/
+pytest src/tests/
 ```
 
 カバレッジレポートを含めるには：
 
 ```bash
-pytest tests/ --cov=my_library
+pytest src/tests/ --cov=my_library
 ```
 
 ## GitHub Actions
@@ -41,11 +45,18 @@ pytest tests/ --cov=my_library
 
 ワークフローの設定は `.github/workflows/python-tests.yml` に定義されています。
 
+### ブランチ保護ルール
+
+このリポジトリでは以下のブランチ保護ルールを実装しています：
+
+- `master`ブランチは`develop`ブランチからのプルリクエストでのみ更新可能
+- `develop`ブランチは`feature/*`ブランチからのプルリクエストでのみ更新可能
+
 ## 使い方
 
 ```python
 # 基本的な使い方
-from my_library import add, subtract, multiply, divide
+from apps.my_library import add, subtract, multiply, divide
 
 result_add = add(10, 5)        # 15
 result_subtract = subtract(10, 5)  # 5

@@ -8,7 +8,7 @@ setup(
     author="shige1000",
     author_email="",
     url="https://github.com/shige1000/20250320-library.git",
-    package_dir={": 'src"},
+    package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=[
         # ここに依存パッケージを追加

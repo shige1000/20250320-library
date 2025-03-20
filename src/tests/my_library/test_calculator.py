@@ -1,5 +1,11 @@
+import os
+import sys
 import unittest
-from apps.my_library.calculator import add, subtract, multiply, divide
+
+# テスト実行時のパスを調整
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..")))
+
+from src.apps.my_library.calculator import add, subtract, multiply, divide
 
 
 class TestCalculator(unittest.TestCase):

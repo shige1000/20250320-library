@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from googleapiclient.discovery import build, Resource
+from googleapiclient.discovery import Resource
 
 
 class SpreadsheetServiceInterface(ABC):

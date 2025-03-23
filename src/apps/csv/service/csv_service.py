@@ -16,3 +16,6 @@ class CsvService(Singleton, CsvServiceInterface):
         with open(csv_path, "w") as f:
             writer = csv.writer(f)
             writer.writerows(data)
+
+    def test(self):
+        print("test")

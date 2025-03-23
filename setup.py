@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name="my_library",
+    name="20250320_library",
     version="0.1.0",
     description="よく利用する処理をまとめたライブラリ",
     author="shige1000",

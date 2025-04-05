@@ -1,6 +1,7 @@
 # 呼び出しのサンプル
 import subprocess
 import sys
+import os
 
 
 def install_library():
@@ -25,6 +26,9 @@ def main():
     """
     メイン処理
     """
+    parent_path = os.path.dirname(os.path.abspath(__file__))
+    out_put_csv_path = os.path.join(parent_path, "execution_library.csv")
+
     # ライブラリをインストール
     if not install_library():
         return
@@ -44,8 +48,9 @@ def main():
             ["山田花子", "32", "デザイナー"],
             ["佐藤一郎", "45", "マネージャー"]
         ]
-        csv_service.create_csv(data, "output_data.csv")
-        print("CSVファイルを作成しました: output_data.csv")
+
+        csv_service.create_csv(data, out_put_csv_path)
+        print("CSVファイルを作成しました")
 
     except ImportError as e:
         print(f"インポートエラー: {e}")

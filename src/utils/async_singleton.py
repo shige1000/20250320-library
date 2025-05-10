@@ -17,11 +17,12 @@ class AsyncSingleton:
             async with cls._lock:
                 if cls._instance is None:
                     instance = cls()
-                    # 非同期初期化があれば呼ぶ
+                    # 初期化後に代入する（ここが重要！）
                     if hasattr(instance, "_async_initialize"):
                         await instance._async_initialize(*args, **kwargs)
                     elif hasattr(instance, "_initialize"):
                         instance._initialize(*args, **kwargs)
+                    cls._instance = instance
         return cls._instance
 
     # async def _async_initialize(self, *args, **kwargs):

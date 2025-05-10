@@ -1,10 +1,10 @@
-from utils.singleton import Singleton
+from utils import AsyncSingleton
 from googleapiclient.discovery import build, Resource
 from google.oauth2.service_account import Credentials
 from .spreadsheet_service_interface import SpreadsheetServiceInterface
 
 
-class SpreadsheetService(Singleton, SpreadsheetServiceInterface):
+class SpreadsheetService(AsyncSingleton, SpreadsheetServiceInterface):
     async def connect(self, credentials_path=None) -> Resource:
         """
         Google Sheets APIに接続するメソッド

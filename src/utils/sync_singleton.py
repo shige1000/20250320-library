@@ -1,7 +1,7 @@
 import threading
 
 
-class Singleton:
+class SyncSingleton:
     _instance = None
     _lock = threading.Lock()
 
@@ -10,8 +10,10 @@ class Singleton:
             with cls._lock:
                 if cls._instance is None:
                     cls._instance = super().__new__(cls)
-                    cls._instance._initialize(*args, **kwargs)
+                    if hasattr(cls._instance, "_initialize"):
+                        cls._instance._initialize(*args, **kwargs)
         return cls._instance
 
-    def _initialize(self, *args, **kwargs):
-        pass
+    # 同期用の初期化メソッド（オプション）
+    # def _initialize(self, *args, **kwargs):
+    #     pass

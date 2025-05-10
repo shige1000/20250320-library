@@ -2,6 +2,7 @@
 import subprocess
 import sys
 import os
+import asyncio
 
 
 def install_library():
@@ -22,7 +23,7 @@ def install_library():
         return False
 
 
-def main():
+async def main():
     """
     メイン処理
     """
@@ -39,7 +40,7 @@ def main():
         from apps.csv.service.csv_service import CsvService
 
         # インスタンス化
-        csv_service = CsvService()
+        csv_service = await CsvService()
 
         # CSVファイル作成
         data = [
@@ -49,7 +50,7 @@ def main():
             ["佐藤一郎", "45", "マネージャー"]
         ]
 
-        csv_service.create_csv(data, out_put_csv_path)
+        await csv_service.create_csv(data, out_put_csv_path)
         print("CSVファイルを作成しました")
 
     except ImportError as e:
@@ -57,4 +58,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

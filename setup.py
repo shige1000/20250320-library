@@ -7,7 +7,7 @@ setup(
     description="よく利用する処理をまとめたライブラリ",
     author="shige1000",
     author_email="",
-    url="git@github.com:shige1000/20250320-library.git",
+    url="git@github.com:shige1000/20250320_library.git",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     install_requires=[

@@ -18,10 +18,13 @@ class CsvService(AsyncSingleton, CsvServiceInterface):
             data (List[list]): CSVファイルに書き込むデータ
             csv_path (str): 作成するCSVファイルのパス
         """
+        # 同期的なCSV書き込み処理を行う内部関数
         def _write_csv():
             with open(csv_path, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
                 writer.writerows(data)
 
+        # 同期関数である _write_csv を別のスレッドで実行し、完了を待つ
+        # これにより、非同期イベントループをブロックすることなくファイルI/O操作を行える
         await asyncio.to_thread(_write_csv)
         print(f"CSVファイルが非同期で作成されました: {csv_path}")
